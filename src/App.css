@@ -1,0 +1,29 @@
+#root {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  padding: 2rem;
+  /* text-align: center; */
+}
+
+.portfolio-color {
+    color: #682ae9;
+}
+
+/* .html-title{
+  padding: 10rem;
+} */
+/* .singleSkill{
+  font-size: 2rem;
+  position: absolute;
+ 
+}
+
+/* .skills{
+  line-height: 0;
+} */
+
+.rolesBox {
+  line-height: 0;
+  position: absolute;
+  /* text-align: center; */
+}
