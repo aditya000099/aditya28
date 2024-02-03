@@ -102,37 +102,14 @@
 
 
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import './App.css';
 // import ScrollMagic from 'scrollmagic';
 import gsap from 'gsap';
 import SplitTextJS from 'split-text-js';
 
 function App() {
-//   useEffect(() => {
-//   const skills = gsap.utils.toArray('.singleSkill');
-//   const tl = gsap.timeline();
-//   skills.forEach(skill =>{
-//     const splitSkill = new SplitTextJS(skill);
-//     tl.from(splitSkill.chars, {
-//       opacity: 0,
-//       y: 80,
-//       rotateX: -90,
-//       stagger: 0.02,
-//       // duration: 2,
-//       // ease: "power2.out"
-//     }, "<")
-//     .to(splitSkill.chars, {
-//       opacity: 0,
-//       y: -80,
-//       rotateX: 90,
-//       stagger: 0.02
-//       // duration: 1,
-//       // ease: "power2.out"
-//     }, "<1")
-//   })
-// }
-//   )
+
   useEffect(() => {
   const skills = gsap.utils.toArray('.roles');
   const tl = gsap.timeline({repeat: -1});
