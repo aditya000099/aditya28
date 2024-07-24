@@ -101,18 +101,19 @@
 
 
 
-
 import { useEffect, useRef } from 'react';
 import './App.css';
-// import ScrollMagic from 'scrollmagic';
 import gsap from 'gsap';
 import SplitTextJS from 'split-text-js';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import RaceScroller from './NewApp';
+import { useGSAP } from '@gsap/react';
+
 
 function App() {
   
   useEffect(() => {
+   
     const skills = gsap.utils.toArray('.roles');
     const tl = gsap.timeline({ repeat: -1 });
     skills.forEach(skill => {
@@ -122,63 +123,49 @@ function App() {
         y: 20,
         rotateX: -90,
         stagger: 0.02,
-        // duration: 2,
-        // ease: "power2.out"
+    
       }, "<")
         .to(splitSkill.chars, {
           opacity: 0,
           y: -20,
           rotateX: 90,
           stagger: 0.005
-          // duration: 1,
-          // ease: "power2.out"
+         
         }, "<1")
     })
   }
   )
-    // useEffect(() => {
-    //   var tl2 = gsap.timeline({
-    //     scrollTrigger: {
-    //       trigger: '.skills',
-    //       markers: true,
-    //       start: "50% 50%",
-    //       end: "100% 50%",
-    //       // scrub: 2,
-    //       pin: true,
-    //     }
-    //   })
-    //   tl2.from('.skills', {
-    //     // opacity: 0,
-    //     // top: 0,
-    //     y: 0,
-    //   })
-    // }),
-    const skills = useRef(null);
-    
 
-    useEffect(() => {
-      const skillsLength = gsap.utils.toArray('.singleSkill').length;
-      const scrollTween = gsap.to('.singleSkill', {
-        xPercent: -100 * (skillsLength - 1),
-        ease: 'none',
-        duration: 100,
-      });
+
+  const skills = useRef(null);
+
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    var skillsLength = gsap.utils.toArray('.singleSkill').length;
+    var scrollTween = gsap.to('.singleSkill', {
+      xPercent: -100 * (skillsLength - 1),
+      ease:'none',
+      // duration: 0.1,  
+      // scrollBehavior: 'easeInOut',
       
-        
-        ScrollTrigger.create( {
-          trigger: '.skills',
-          pin: true,
-          scrub: 1,
-          // end: "+=3000",
-          // markers: true,
-          start: "0% 0%",
-          end: "100% 100%",
-          animation: scrollTween,
-          
-        });
-      }, []);
+    });
     
+    ScrollTrigger.create({
+      trigger: '.skills',
+      // pin: true,
+      pin: true,
+      scrub: 1,
+      // end: "+=",
+      start: "0% 0%",
+      markers: true,
+      end: "100% 100%",
+      animation: scrollTween,
+
+    });
     
+  }, []);
+
+
 
   return (
     <>
@@ -235,10 +222,11 @@ function App() {
         </div>
 
 
-        <h1 className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-2xl portfolio-color">{'</div>'}</h1>
+        <h1 className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-2xl portfolio-color mt-36">{'</div>'}</h1>
       </div>
       <h1 className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-2xl portfolio-color ps-4">{'</body>'}</h1>
       <h1 className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-2xl portfolio-color">{'</html>'}</h1>
+      <RaceScroller />
 
     </>
   );

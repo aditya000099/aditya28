@@ -1,0 +1,27 @@
+/* styles.css */
+.space-50vh {
+    height: 50vh;
+  }
+  
+  .space-100vh {
+    height: 100vh;
+  }
+  
+  .lightBG {
+    background-color: lightgray;
+  }
+  
+  .racesWrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .races {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .races h2 {
+    white-space: nowrap;
+  }
+  
